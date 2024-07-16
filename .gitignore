@@ -57,6 +57,7 @@ compile_commands.json
 src/compile_commands.json
 debug/
 lib/
-test/test
+test/mlist/test
+test/mlist_typed/test
 docs/
 

@@ -3,8 +3,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <marble_types.h>
-#include <marble_list.h>
+#include <marble/types.h>
+#include <marble/list.h>
 #include <string.h>
 
 void u32_print(void* data) {
