@@ -1,31 +1,75 @@
 
 #include <stdio.h>
+#include <string.h>
 
 #include <marble/types.h>
 
 #define MLIST_TYPE u32
 #include <marble/list_typed.h>
 
+typedef char* str;
+#define MLIST_TYPE str
+#define MLIST_TYPE_IS_HEAP
+#include <marble/list_typed.h>
+
 void u32_print(u32 data) {
     printf("%u\n", data);
 }
 
-int main(void) {
-
-    mlist_cfg_u32 cfg = {0};
-
-    mlist_u32 list = mlist_init_u32(cfg);
-
-    mlist_push_back_u32(list, 1);
-    mlist_push_back_u32(list, 2);
-    mlist_push_back_u32(list, 3);
-    mlist_push_back_u32(list, 4);
-    mlist_push_back_u32(list, 5);
-
+void u32_print_list(mlist_u32 list) {
     mlist_map_u32(list, u32_print);
     printf("---\n");
+}
 
-    mlist_free_u32(list);
+char* str_copy(char* data) {
+    size_t sz = strlen(data) + 1;
+    char* out = malloc(sizeof (char) * sz);
+    strcpy(out, data);
+    return out;
+}
+
+void str_free(char* data) {
+    free(data);
+}
+
+void str_print(char* data) {
+    printf("%s\n", data);
+}
+
+void str_print_list(mlist_str list) {
+    mlist_map_str(list, str_print);
+    printf("---\n");
+}
+
+int main(void) {
+
+    mlist_cfg_u32 cfg_u32 = {0};
+
+    mlist_u32 list_u32 = mlist_init_u32(cfg_u32);
+
+    mlist_push_back_u32(list_u32, 1);
+    mlist_push_back_u32(list_u32, 2);
+    mlist_push_back_u32(list_u32, 3);
+    mlist_push_back_u32(list_u32, 4);
+    mlist_push_back_u32(list_u32, 5);
+
+    u32_print_list(list_u32);
+
+    mlist_free_u32(list_u32);
+
+    mlist_cfg_str cfg_str = {
+        .copy = str_copy,
+        .free = str_free
+    };
+
+    mlist_str list_str = mlist_init_str(cfg_str);
+
+    mlist_push_back_str(list_str, "hello");
+    mlist_push_back_str(list_str, "world");
+
+    str_print_list(list_str);
+
+    mlist_free_str(list_str);
 
     return 0;
 }

@@ -16,7 +16,6 @@
  *      properly (e.g. typedef char* str)                                    *
  *****************************************************************************/
 
-#define MLIST_TYPE u32
 #ifdef MLIST_TYPE
 
 #define MLIST_TYPE_NAME(name) MJOIN2(name, MLIST_TYPE)
