@@ -8,6 +8,7 @@ A utility library for MarbleTile's personal C projects.
 * `make release` builds static and dynamic in `./lib`
 * `make debug` builds with debug symbols in `./debug`
 * `make docs` makes HTML and Latex documentation in `./docs`
+* do the usual `cmake` thing if you don't want to use clang
 
 ### marble.h
 
