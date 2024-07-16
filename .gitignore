@@ -59,5 +59,6 @@ debug/
 lib/
 test/mlist/test
 test/mlist_typed/test
+test/Makefile_template
 docs/
 
