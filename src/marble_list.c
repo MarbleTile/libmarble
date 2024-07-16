@@ -50,6 +50,18 @@ mlist mlist_copy(mlist list) {
     return new_list;
 }
 
+void* mlist_peek_back(mlist list) {
+    if (list->length == 0)
+        return NULL;
+    return list->end->data;
+}
+
+void* mlist_peek_front(mlist list) {
+    if (list->length == 0)
+        return NULL;
+    return list->begin->data;
+}
+
 void _mlist_set_data(mlist list, _mlist_node* node, void* data) {
     if (list->copy)
         node->data = list->copy(data);

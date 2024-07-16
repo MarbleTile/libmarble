@@ -99,6 +99,22 @@ mlist mlist_init(mlist_cfg cfg);
 mlist mlist_copy(mlist list);
 
 /**
+ * Returns a reference to the back of `list`. 
+ * 
+ * @param list The input list
+ * @return A reference to the back of `list`
+ */
+void* mlist_peek_back(mlist list);
+
+/**
+ * Returns a reference to the front of `list`.
+ *
+ * @param list The input list
+ * @return A reference to the front of `list`
+ */
+void* mlist_peek_front(mlist list);
+
+/**
  * Appends `data` to the end of `list`.
  *
  * @param list The input list
