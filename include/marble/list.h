@@ -4,7 +4,7 @@
 
 #include <stdbool.h>
 
-#include <marble_types.h>
+#include <marble/types.h>
 
 //TODO: make thread-safe parallel versions of map, reduce, filter
 //  COUNTERPOINT: perhaps just a different header altogether

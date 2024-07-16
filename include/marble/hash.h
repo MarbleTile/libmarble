@@ -2,7 +2,7 @@
 #ifndef MARBLE_HASH_H
 #define MARBLE_HASH_H
 
-#include <marble_types.h>
+#include <marble/types.h>
 
 /**
  *

@@ -1,6 +1,6 @@
 
-#include <marble_hash.h>
-#include <marble_types.h>
+#include <marble/hash.h>
+#include <marble/types.h>
 
 #include <stdlib.h>
 

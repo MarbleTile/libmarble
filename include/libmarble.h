@@ -2,9 +2,10 @@
 #ifndef MARBLE_H
 #define MARBLE_H
 
-#include <marble_types.h>
-#include <marble_hash.h>
-#include <marble_list.h>
+#include <marble/hash.h>
+#include <marble/list.h>
+#include <marble/macro.h>
+#include <marble/types.h>
 
 #endif // MARBLE_H
 

@@ -1,6 +1,6 @@
 
-#include <marble_list.h>
-#include <marble_types.h>
+#include <marble/list.h>
+#include <marble/types.h>
 
 #include <stdlib.h>
 #include <string.h>
