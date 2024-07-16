@@ -4,10 +4,17 @@
 #include <marble/macro.h>
 #include <marble/types.h>
 
-typedef char* str;
 
-#define MLIST_TYPE str
-#define MLIST_TYPE_IS_HEAP(x) x
+/*****************************************************************************
+ *                                  USAGE                                    *
+ *---------------------------------------------------------------------------*
+ * 1. define MLIST_TYPE to desired mlist type                                *
+ * 2. if MLIST_TYPE is complicated and needs its own heap allocations,       *
+ *      define MLIST_TYPE_IS_HEAP and pass your deep copy and free functions *
+ *      to mlist_cfg when initializing an mlist                              *
+ * 3. if using some pointer type, give it a type alias so renaming can work  *
+ *      properly (e.g. typedef char* str)                                    *
+ *****************************************************************************/
 
 #ifdef MLIST_TYPE
 
