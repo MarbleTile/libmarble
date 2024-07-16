@@ -198,13 +198,13 @@ void mlist_free(mlist list) {
     _mlist_node* curr = list->begin;
     _mlist_node* next = NULL;
     if (list->free != NULL) {
-        while (curr != NULL) {
-            next = curr->next;
-            list->free(curr);
-            curr = next;
-        }
+        mlist_map(list, list->free);
     }
-    mlist_map(list, free);
+    while (curr != NULL) {
+        next = curr->next;
+        free(curr);
+        curr = next;
+    }
     free(list);
 }
 
