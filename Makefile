@@ -19,6 +19,7 @@ compile_commands.json: src/* include/* CMakeLists.txt
 
 .PHONY: docs
 docs:
+	mkdir -p docs
 	doxygen
 
 .PHONY: static
