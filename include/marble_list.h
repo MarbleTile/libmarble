@@ -1,9 +1,10 @@
 
-#pragma once
+#ifndef MARBLE_LIST_H
+#define MARBLE_LIST_H
 
 #include <stdbool.h>
 
-#include "marble_types.h"
+#include <marble_types.h>
 
 //TODO: make thread-safe parallel versions of map, reduce, filter
 //  COUNTERPOINT: perhaps just a different header altogether
@@ -192,4 +193,6 @@ size_t mlist_length(mlist list);
  * @param list The input list
  */
 void mlist_free(mlist list);
+
+#endif // MARBLE_LIST_H
 

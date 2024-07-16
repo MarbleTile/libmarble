@@ -1,7 +1,8 @@
 
-#pragma once
+#ifndef MARBLE_HASH_H
+#define MARBLE_HASH_H
 
-#include "marble_types.h"
+#include <marble_types.h>
 
 /**
  *
@@ -18,4 +19,6 @@ void    mhash_put(mhash table, const char* key, void* value);
 void*   mhash_get(mhash table, const char* key);
 void    mhash_print(mhash table);
 void    mhash_free(mhash table);
+
+#endif // MARBLE_HASH_H
 
