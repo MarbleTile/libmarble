@@ -46,5 +46,3 @@ well. Follows the same `*_cfg` methodology for accessing
     * [Ian Fisher](https://iafisher.com/blog/2020/06/type-safe-generics-in-c)
     * [John Kimble](https://codereview.stackexchange.com/questions/274860/concept-of-implementing-generic-types-in-c-using-macros)
 
-Thank you for helping me understand C generics.
-
