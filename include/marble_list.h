@@ -171,7 +171,8 @@ mlist mlist_filter(mlist list, mlist_filter_fn filter_fn);
 
 /**
  * Reduces `list` to a single element value by some procedure defined
- * in `reduce_fn`. Returns this value.
+ * in `reduce_fn`. This value is newly allocated and must be freed. `list`
+ * will be unchanged.
  * 
  * @param list The input list
  * @param reduce_fn The function to be run for all elements of `list`

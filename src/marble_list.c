@@ -162,6 +162,8 @@ void mlist_map(mlist list, mlist_map_fn map_fn) {
 }
 
 mlist mlist_filter(mlist list, mlist_filter_fn filter_fn) {
+    if (list->length == 0)
+        return NULL;
     mlist_cfg new_cfg = {
         .copy = list->copy,
         .free = list->free,
@@ -177,15 +179,25 @@ mlist mlist_filter(mlist list, mlist_filter_fn filter_fn) {
 }
 
 void* mlist_reduce(mlist list, mlist_reduce_fn reduce_fn) {
+    if (list->length < 2)
+        return NULL;
     _mlist_node* curr = list->begin->next;
     void* accum;
-    if (list->copy != NULL) 
+    if (list->copy != NULL) {
         accum = list->copy(list->begin->data);
-    else 
+        void* tmp = NULL;
+        while (curr != NULL) {
+            tmp = accum;
+            accum = reduce_fn(tmp, curr->data);
+            list->free(tmp);
+            curr = curr->next;
+        }
+    } else {
         accum = list->begin->data;
-    while (curr != NULL) {
-        accum = reduce_fn(accum, curr->data);
-        curr = curr->next;
+        while (curr != NULL) {
+            accum = reduce_fn(accum, curr->data);
+            curr = curr->next;
+        }
     }
     return accum;
 }
@@ -195,6 +207,10 @@ size_t mlist_length(mlist list) {
 }
 
 void mlist_free(mlist list) {
+    if (list->length == 0) {
+        free(list);
+        return;
+    }
     _mlist_node* curr = list->begin;
     _mlist_node* next = NULL;
     if (list->free != NULL) {
