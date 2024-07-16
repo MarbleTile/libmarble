@@ -57,4 +57,5 @@ compile_commands.json
 src/compile_commands.json
 debug/
 lib/
+test/test
 
