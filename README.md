@@ -3,6 +3,12 @@
 
 A utility library for MarbleTile's personal C projects.
 
+## building
+
+* `make release` builds static and dynamic in `./lib`
+* `make debug` builds with debug symbols in `./debug`
+* `make docs` makes HTML and Latex documentation in `./docs`
+
 ### marble.h
 
 Everything. All of it.
