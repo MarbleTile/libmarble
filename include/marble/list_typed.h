@@ -1,8 +1,8 @@
 
 #include <stdbool.h>
 
-#include <marble_macro.h>
-#include <marble_types.h>
+#include <marble/macro.h>
+#include <marble/types.h>
 
 typedef char* str;
 
