@@ -4,8 +4,8 @@ CFLAGS=-Wall -Wextra -Wpedantic -Werror
 MARBLE_PATH=..
 LFLAGS=-I${MARBLE_PATH}/include -L${MARBLE_PATH}/debug -lmarble
 
-test: test.c
-	${CC} ${CFLAGS} -g -o $@ $^ ${LFLAGS}
+test: test.c ../debug/libmarble.so
+	${CC} ${CFLAGS} -g -o $@ test.c ${LFLAGS}
 
 .PHONY: run
 run: test
@@ -18,4 +18,7 @@ memcheck: test
 .PHONY: debug
 debug: test
 	LD_LIBRARY_PATH=${MARBLE_PATH}/debug gdb ./test
+
+../debug/libmarble.so: ../src/* ../include/* 
+	$(MAKE) -C ..
 
