@@ -41,6 +41,14 @@ void str_print_list(mlist_str list) {
     printf("---\n");
 }
 
+char* str_reduce(char* accum, char* next) {
+    size_t sz = strlen(accum) + strlen(next) + 1;
+    char* out = malloc(sz * sizeof (char));
+    strcat(out, accum);
+    strcat(out, next);
+    return out;
+}
+
 int main(void) {
 
     mlist_cfg_u32 cfg_u32 = {0};
@@ -66,8 +74,15 @@ int main(void) {
 
     mlist_push_back_str(list_str, "hello");
     mlist_push_back_str(list_str, "world");
+    mlist_push_back_str(list_str, "world");
+    mlist_push_back_str(list_str, "world");
+    mlist_push_back_str(list_str, "world");
 
     str_print_list(list_str);
+
+    char* str_reduced = mlist_reduce_str(list_str, str_reduce);
+    printf("%s\n", str_reduced);
+    free(str_reduced);
 
     mlist_free_str(list_str);
 

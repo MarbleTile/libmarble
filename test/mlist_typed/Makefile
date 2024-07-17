@@ -20,5 +20,5 @@ debug: test
 	LD_LIBRARY_PATH=${MARBLE_PATH}/debug gdb ./test
 
 ${MARBLE_PATH}/debug/libmarble.so: ${MARBLE_PATH}/src/* ${MARBLE_PATH}/include/* 
-	$(MAKE) -C ${MARBLE_PATH}
+	$(MAKE) -C ${MARBLE_PATH} debug/libmarble.so
 
