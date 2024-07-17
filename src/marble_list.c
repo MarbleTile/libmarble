@@ -14,10 +14,10 @@ typedef struct _mlist_node {
 typedef struct _mlist {
     _mlist_node* begin;
     _mlist_node* end;
-    size_t length;
-    u32 data_size;
     mlist_free_fn free;
     mlist_deep_copy_fn copy;
+    size_t length;
+    u32 data_size;
 } _mlist;
 
 mlist mlist_init(mlist_cfg cfg) {
