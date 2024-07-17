@@ -51,11 +51,11 @@ typedef bool (*mlist_filter_fn) (void* data);
  * value based on this procedure's definition. Returns newly allocated
  * memory if `copy` and `free` are defined.
  *
- * @param first The first data element
- * @param second The data element after `first`
+ * @param accum The accumulator data element
+ * @param next The next data element to be processed
  * @return The value of combining `first` and `second`
  */
-typedef void* (*mlist_reduce_fn) (void* first, void* second);
+typedef void* (*mlist_reduce_fn) (void* accum, void* next);
 
 /** A type alias for the function expected by `mlist_free()`.
  *
