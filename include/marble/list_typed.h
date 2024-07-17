@@ -51,10 +51,10 @@ typedef struct MLIST_TYPE_NAME(_mlist_node) {
 typedef struct MLIST_TYPE_NAME(_mlist) {
     MLIST_TYPE_NAME(_mlist_node)* begin;
     MLIST_TYPE_NAME(_mlist_node)* end;
-    size_t length;
-    u32 data_size;
     MLIST_TYPE_NAME(mlist_free_fn) free;
     MLIST_TYPE_NAME(mlist_deep_copy_fn) copy;
+    size_t length;
+    u32 data_size;
 } MLIST_TYPE_NAME(_mlist);
 
 MLIST_TYPE_NAME(mlist) MLIST_TYPE_NAME(mlist_init)(MLIST_TYPE_NAME(mlist_cfg) cfg) {
