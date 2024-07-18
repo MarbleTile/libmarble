@@ -16,12 +16,11 @@
 #include <marble/types.h>
 
 #include <stdbool.h>
-
+#include <stdlib.h>
+#include <string.h>
 
 #define MLIST_TYPE_NAME(name) MJOIN2(name, MLIST_TYPE)
 
-#include <stdlib.h>
-#include <string.h>
 
 typedef struct MLIST_TYPE_NAME(_mlist)* MLIST_TYPE_NAME(mlist);
 
