@@ -31,7 +31,8 @@ behavior, as well as Python's `map()`, `filter()`, and `reduce()`.
 
 ### marble/hash.h
 
-Provides `mhash`, a hash table.
+Provides `mhash`, a hash table. Uses NUL-terminated string keys, hashed with
+FNV-1.
 
 ### marble/\*\_typed.h
 
@@ -45,4 +46,7 @@ well. Follows the same `*_cfg` methodology for accessing
     * [Sam Rebelsky](https://rebelsky.cs.grinnell.edu/musings/cnix-macros-generics)
     * [Ian Fisher](https://iafisher.com/blog/2020/06/type-safe-generics-in-c)
     * [John Kimble](https://codereview.stackexchange.com/questions/274860/concept-of-implementing-generic-types-in-c-using-macros)
+* Everything hash
+    * [Glenn Fowler, Phong Vo, and Landon Curt Noll](http://www.isthe.com/chongo/tech/comp/fnv/index.html#history)
+    * [Richard Barrell](https://stackoverflow.com/questions/2556142/chained-hash-tables-vs-open-addressed-hash-tables)
 
