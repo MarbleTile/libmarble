@@ -4,8 +4,8 @@
  *---------------------------------------------------------------------------*
  * 1. define MLIST_TYPE to desired mlist type                                *
  * 2. if MLIST_TYPE is complicated and needs its own heap allocations,       *
- *      define MLIST_TYPE_IS_HEAP and pass your deep copy and free functions *
- *      to mlist_cfg when initializing an mlist                              *
+ *      define MLIST_TYPE_IS_DYNAMIC and pass your deep copy and free        *
+ *      functions to mlist_cfg when initializing an mlist                    *
  * 3. if using some pointer type, give it a type alias so renaming can work  *
  *      properly (e.g. typedef char* str)                                    *
  *****************************************************************************/
@@ -92,7 +92,7 @@ void MLIST_TYPE_NAME(_mlist_push_first)(MLIST_TYPE_NAME(mlist) list, MLIST_TYPE 
     list->begin = malloc(sizeof (MLIST_TYPE_NAME(_mlist_node)));
     list->begin->next = NULL;
     list->begin->prev = NULL;
-#ifdef MLIST_TYPE_IS_HEAP
+#ifdef MLIST_TYPE_IS_DYNAMIC
     list->begin->data = list->copy(data);
 #else
     list->begin->data = data;
@@ -109,7 +109,7 @@ void MLIST_TYPE_NAME(mlist_push_back)(MLIST_TYPE_NAME(mlist) list, MLIST_TYPE da
         new_end->next = NULL;
         new_end->prev = list->end;
         list->end->next = new_end;
-#ifdef MLIST_TYPE_IS_HEAP
+#ifdef MLIST_TYPE_IS_DYNAMIC
         new_end->data = list->copy(data);
 #else
         new_end->data = data;
@@ -127,7 +127,7 @@ void MLIST_TYPE_NAME(mlist_push_front)(MLIST_TYPE_NAME(mlist) list, MLIST_TYPE d
         new_begin->next = list->begin;
         new_begin->prev = NULL;
         list->begin->prev = new_begin;
-#ifdef MLIST_TYPE_IS_HEAP
+#ifdef MLIST_TYPE_IS_DYNAMIC
         new_begin->data = list->copy(data);
 #else
         new_begin->data = data;
@@ -139,7 +139,7 @@ void MLIST_TYPE_NAME(mlist_push_front)(MLIST_TYPE_NAME(mlist) list, MLIST_TYPE d
 
 MLIST_TYPE MLIST_TYPE_NAME(_mlist_pop_node)(MLIST_TYPE_NAME(mlist) list, MLIST_TYPE_NAME(_mlist_node)* node) {
     MLIST_TYPE out = node->data;
-#ifdef MLIST_TYPE_IS_HEAP
+#ifdef MLIST_TYPE_IS_DYNAMIC
     out = list->copy(node->data);
     list->free(node->data);
 #endif
@@ -226,7 +226,7 @@ MLIST_TYPE MLIST_TYPE_NAME(mlist_reduce)(MLIST_TYPE_NAME(mlist) list, MLIST_TYPE
         return MLIST_TYPE_0;
     MLIST_TYPE_NAME(_mlist_node)* curr = list->begin->next;
     MLIST_TYPE accum;
-#ifdef MLIST_TYPE_IS_HEAP
+#ifdef MLIST_TYPE_IS_DYNAMIC
     accum = list->copy(list->begin->data);
     MLIST_TYPE tmp = NULL;
     while (curr != NULL) {
@@ -269,7 +269,7 @@ void MLIST_TYPE_NAME(mlist_free)(MLIST_TYPE_NAME(mlist) list) {
     }
     MLIST_TYPE_NAME(_mlist_node)* curr = list->begin;
     MLIST_TYPE_NAME(_mlist_node)* next = NULL;
-#ifdef MLIST_TYPE_IS_HEAP
+#ifdef MLIST_TYPE_IS_DYNAMIC
     MLIST_TYPE_NAME(mlist_map)(list, list->free);
 #endif
     while (curr != NULL) {
@@ -281,7 +281,7 @@ void MLIST_TYPE_NAME(mlist_free)(MLIST_TYPE_NAME(mlist) list) {
 }
 
 #undef MLIST_TYPE
-#undef MLIST_TYPE_IS_HEAP
+#undef MLIST_TYPE_IS_DYNAMIC
 
 #endif
 
