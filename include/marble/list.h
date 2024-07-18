@@ -2,9 +2,9 @@
 #ifndef MARBLE_LIST_H
 #define MARBLE_LIST_H
 
-#include <stdbool.h>
-
 #include <marble/types.h>
+
+#include <stdbool.h>
 
 //TODO: make thread-safe parallel versions of map, reduce, filter
 //  COUNTERPOINT: perhaps just a different header altogether

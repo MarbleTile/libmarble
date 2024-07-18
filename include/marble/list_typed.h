@@ -1,9 +1,8 @@
 
-#include <stdbool.h>
-
 #include <marble/macro.h>
 #include <marble/types.h>
 
+#include <stdbool.h>
 
 /*****************************************************************************
  *                                  USAGE                                    *
