@@ -19,8 +19,13 @@
 #include <stdlib.h>
 #include <string.h>
 
+#ifndef MLIST_TYPE_NAME
 #define MLIST_TYPE_NAME(name) MJOIN2(name, MLIST_TYPE)
+#endif
 
+#ifndef MLIST_TYPE_0
+#define MLIST_TYPE_0 (MLIST_TYPE) {0}
+#endif
 
 typedef struct MLIST_TYPE_NAME(_mlist)* MLIST_TYPE_NAME(mlist);
 
@@ -73,13 +78,13 @@ MLIST_TYPE_NAME(mlist) MLIST_TYPE_NAME(mlist_init)(MLIST_TYPE_NAME(mlist_cfg) cf
 
 MLIST_TYPE MLIST_TYPE_NAME(mlist_peek_back)(MLIST_TYPE_NAME(mlist) list) {
     if (list->length == 0)
-        return (MLIST_TYPE) 0;
+        return MLIST_TYPE_0;
     return list->end->data;
 }
 
 MLIST_TYPE MLIST_TYPE_NAME(mlist_peek_front)(MLIST_TYPE_NAME(mlist) list) {
     if (list->length == 0)
-        return (MLIST_TYPE) 0;
+        return MLIST_TYPE_0;
     return list->begin->data;
 }
 
@@ -153,7 +158,7 @@ MLIST_TYPE MLIST_TYPE_NAME(_mlist_pop_first)(MLIST_TYPE_NAME(mlist) list) {
 
 MLIST_TYPE MLIST_TYPE_NAME(mlist_pop_back)(MLIST_TYPE_NAME(mlist) list) {
     if (list->length == 0) {
-        return (MLIST_TYPE) 0;
+        return MLIST_TYPE_0;
     } else if (list->length == 1) {
         return MLIST_TYPE_NAME(_mlist_pop_first)(list);
     } else {
@@ -167,7 +172,7 @@ MLIST_TYPE MLIST_TYPE_NAME(mlist_pop_back)(MLIST_TYPE_NAME(mlist) list) {
       
 MLIST_TYPE MLIST_TYPE_NAME(mlist_pop_front)(MLIST_TYPE_NAME(mlist) list) {
     if (list->length == 0) {
-        return (MLIST_TYPE) 0;
+        return MLIST_TYPE_0;
     } else if (list->length == 1) {
         return MLIST_TYPE_NAME(_mlist_pop_first)(list);
     } else {
@@ -218,7 +223,7 @@ MLIST_TYPE_NAME(mlist) MLIST_TYPE_NAME(mlist_filter)(MLIST_TYPE_NAME(mlist) list
 
 MLIST_TYPE MLIST_TYPE_NAME(mlist_reduce)(MLIST_TYPE_NAME(mlist) list, MLIST_TYPE_NAME(mlist_reduce_fn) reduce_fn) {
     if (list->length < 2)
-        return (MLIST_TYPE) 0;
+        return MLIST_TYPE_0;
     MLIST_TYPE_NAME(_mlist_node)* curr = list->begin->next;
     MLIST_TYPE accum;
 #ifdef MLIST_TYPE_IS_HEAP
