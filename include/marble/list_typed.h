@@ -1,9 +1,4 @@
 
-#include <marble/macro.h>
-#include <marble/types.h>
-
-#include <stdbool.h>
-
 /*****************************************************************************
  *                                  USAGE                                    *
  *---------------------------------------------------------------------------*
@@ -16,6 +11,12 @@
  *****************************************************************************/
 
 #ifdef MLIST_TYPE
+
+#include <marble/macro.h>
+#include <marble/types.h>
+
+#include <stdbool.h>
+
 
 #define MLIST_TYPE_NAME(name) MJOIN2(name, MLIST_TYPE)
 
