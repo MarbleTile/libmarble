@@ -7,6 +7,7 @@
 
 #define MHASH_ALPHA_MAX      0.75
 #define MHASH_DEFAULT_SZ     32
+#define MHASH_DEFAULT_KEY_SZ 32
 #define MHASH_FNV_U64_PRIME  0x00000100000001B3
 #define MHASH_FNV_U64_OFFSET 0xcbf29ce484222325
 
@@ -30,7 +31,7 @@ mhash mhash_init(mhash_cfg cfg) {
     table->innards = innards;
     table->free = cfg.free;
     table->copy = cfg.copy;
-    table->key_size = cfg.key_size;
+    table->key_size = cfg.key_size == 0 ? MHASH_DEFAULT_KEY_SZ : cfg.key_size;
     table->capacity = cfg.init_table_size == 0 ? MHASH_DEFAULT_SZ : cfg.init_table_size;
     table->size = 0;
     return table;
