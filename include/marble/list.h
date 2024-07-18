@@ -17,7 +17,7 @@ typedef struct _mlist* mlist;
 
 /** A type alias for the function expected by `mlist_contains()`.
  *
- * Use with `mlist_find()` to return the first element that makes this 
+ * Use with `mlist_contains()` to return the first element that makes this 
  * function return true. Run for each element of the given `mlist`
  *
  * @param data An element of an `mlist`
