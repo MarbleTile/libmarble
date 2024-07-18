@@ -60,5 +60,7 @@ lib/
 test/mlist/test
 test/mlist_typed/test
 test/Makefile_template
+test/mhash/test
+test/mhash_typed/test
 docs/
 
